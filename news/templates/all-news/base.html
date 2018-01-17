@@ -1,0 +1,43 @@
+{% load bootstrap3 %}
+{% load static%}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+
+  {% if title %}
+  <title>Moringa Tribune - {{title}}</title>
+  {% else %}
+    <title> Moringa Tribune </title>
+  {% endif %}
+
+  {% block styles %}
+  <link href="https://fonts.googleapis.com/css?family=Audiowide" rel="stylesheet">
+
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'css/basenews.css' %}" />
+  {% endblock %}
+
+</head>
+<style>
+.jumbotron h1{
+  font-family: 'Audiowide', cursive;
+}
+body{
+  background-color: grey;
+}
+</style>
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %}
+    <div class="container">
+      <div class="jumbotron">
+      <h1 class='text-center'>News for {{date|date:"l d-F Y"}}</h1></div> {%endblock%}
+</div>
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     {% bootstrap_javascript %}
+    {% endblock %}
+</body>
+</html>
